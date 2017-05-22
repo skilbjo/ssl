@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eoux pipefail
+
+mkvirtualenv --python=$(which python3) ssl
