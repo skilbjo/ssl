@@ -2,6 +2,7 @@
 import os
 import sys
 import ssl
+import argparse
 
 from socket import socket, AF_INET, SOCK_STREAM
 
@@ -17,9 +18,14 @@ def echo_request(text_payload):
   # s.close()
   # print('Connection closed.')
 
-def main():
+def main(text_payload):
   print('Client here, Sending a ping to the server.')
-  echo_request('Hello world?')
+  echo_request(text_payload)
 
 if __name__ == '__main__':
-  main()
+  parser = argparse.ArgumentParser(description='echo client')
+  parser.add_argument('-d','--data', help='what do you want to echo?', required=True)
+
+  args = parser.parse_args()
+
+  main(args.data)
